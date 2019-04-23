@@ -83,25 +83,31 @@ function ShowcaseMode({ mode: Mode = React.Fragment }) {
   );
 }
 
-function Modes() {
-  const [solutionId, setSolutionId] = React.useState("jss");
-  return (
-    <SolutionContext.Provider value={solutionId}>
-      <h1>Modes</h1>
-      <h2>Sync</h2>
-      <ShowcaseMode />
-      <h2>Strict</h2>
-      <ShowcaseMode mode={React.StrictMode} />
-      <h2>Concurrent</h2>
-      <ShowcaseMode mode={React.unstable_ConcurrentMode} />
-    </SolutionContext.Provider>
-  );
-}
-
 function App() {
+  const [solutionId, setSolutionId] = React.useState("jss");
+
   return (
     <React.Suspense fallback={<p>Loading solution</p>}>
-      <Modes />
+      <label>
+        Styling solution
+        <select
+          onChange={e => setSolutionId(e.currentTarget.value)}
+          value={solutionId}
+        >
+          <option value="emotion">emotion</option>
+          <option value="jss">Jss</option>
+          <option value="styled">styled-components</option>
+        </select>
+      </label>
+      <SolutionContext.Provider key={solutionId} value={solutionId}>
+        <h1>Modes</h1>
+        <h2>Sync</h2>
+        <ShowcaseMode />
+        <h2>Strict</h2>
+        <ShowcaseMode mode={React.StrictMode} />
+        <h2>Concurrent</h2>
+        <ShowcaseMode mode={React.unstable_ConcurrentMode} />
+      </SolutionContext.Provider>
     </React.Suspense>
   );
 }
