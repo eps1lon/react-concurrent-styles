@@ -14,6 +14,6 @@ export const Button = styled.button`
 
 export const CssReset = createGlobalStyle`
   body {
-    color: black;
+    color: red;
   }
 `;

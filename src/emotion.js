@@ -19,7 +19,7 @@ export function CssReset() {
     <Global
       styles={css`
         body {
-          color: grey;
+          color: blue;
         }
       `}
     />
