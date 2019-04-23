@@ -86,7 +86,7 @@ function ShowcaseMode({ mode: Mode = React.Fragment }) {
 }
 
 const App = withRouter(function App({ history, location }) {
-  const routedId = location.pathname.slice(1);
+  const routedId = location.pathname.slice(1) || 'jss';
   const [solutionId, setSolutionId] = React.useState(routedId);
   if (routedId !== solutionId) {
     setSolutionId(routedId);
