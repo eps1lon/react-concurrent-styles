@@ -11,6 +11,8 @@
     "react-cache": "file:vendor/react-cache",
     "react-dom": "16.8.6",
     "react-jss": "10.0.0-alpha.16",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0",
     "styled-components": "4.2.0"
   },

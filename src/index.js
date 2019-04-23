@@ -1,6 +1,8 @@
 import React from "react";
 import { unstable_createResource } from "react-cache";
 import ReactDOM from "react-dom";
+import { withRouter } from "react-router";
+import { BrowserRouter as Router } from "react-router-dom";
 import useInterval from "./useInterval";
 
 const timeout = 2000;
@@ -83,17 +85,24 @@ function ShowcaseMode({ mode: Mode = React.Fragment }) {
   );
 }
 
-function App() {
-  const [solutionId, setSolutionId] = React.useState("jss");
+const App = withRouter(function App({ history, location }) {
+  const routedId = location.pathname.slice(1);
+  const [solutionId, setSolutionId] = React.useState(routedId);
+  if (routedId !== solutionId) {
+    setSolutionId(routedId);
+  }
+
+  function handleChange(event) {
+    const nextId = event.currentTarget.value;
+    setSolutionId(nextId);
+    history.push(`/${nextId}`);
+  }
 
   return (
     <React.Suspense fallback={<p>Loading solution</p>}>
       <label>
         Styling solution
-        <select
-          onChange={e => setSolutionId(e.currentTarget.value)}
-          value={solutionId}
-        >
+        <select onChange={handleChange} value={solutionId}>
           <option value="emotion">emotion</option>
           <option value="jss">Jss</option>
           <option value="styled">styled-components</option>
@@ -110,7 +119,12 @@ function App() {
       </SolutionContext.Provider>
     </React.Suspense>
   );
-}
+});
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  rootElement
+);
