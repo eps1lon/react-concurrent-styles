@@ -8043,10 +8043,8 @@ react-app-polyfill@^1.0.0:
     regenerator-runtime "0.13.2"
     whatwg-fetch "3.0.0"
 
-react-cache@2.0.0-alpha.0:
+"react-cache@file:vendor/react-cache":
   version "2.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/react-cache/-/react-cache-2.0.0-alpha.0.tgz#d02d16a4565fd9f12478a2a41e980ba4fcbab4d5"
-  integrity sha512-o7nA1dIbi6wOoIoQPQBL58CgIQ4tCA3itIR3WlE2VHMIFkIXbvsMyolg+Q9wDVUlCvU6b2n40RTTv8vOmjXCOQ==
 
 react-dev-utils@^9.0.0:
   version "9.0.0"
